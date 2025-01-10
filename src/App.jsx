@@ -4,7 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import { Box, Button, Card, CardActions, CardContent, CardHeader, Fab, IconButton, Modal, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, CardHeader, Fab, IconButton, Modal, Stack, TextField, Tooltip, Typography } from '@mui/material';
 import { Add } from '@mui/icons-material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
@@ -201,16 +201,17 @@ function App() {
                     No new Notes
                   </div>
             }
-
-          </div>
-          {/* Add Button */}
-          <div style={{ position: "fixed", bottom: '25px', right: '10%', zIndex: 50, }} className=''>
+            {/* Add Button */}
+          <div style={{ position:"fixed",right:50, bottom:50 }} className=''>
             <Tooltip title='Add a New Note' placement='left'>
-              <Fab sx={{padding:"40px"}} color="secondary" aria-label="add">
+              <Fab pos sx={{padding:"40px"}} color="secondary" aria-label="add">
                 <Add  onClick={handleShow} />
               </Fab>
             </Tooltip>
           </div>
+
+          </div>
+          
         </div>
       </div>
       <Footer />
@@ -222,8 +223,9 @@ function App() {
         onClose={handleClose}
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
+        className=''
       >
-        <Box sx={{ minWidth: "50%", minHeight: 500, backgroundColor: 'white', color: 'black', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', padding: 5, borderRadius: '5%' }}>
+        <Box sx={{ minWidth: "50%", minHeight: 500, backgroundColor: 'white', color: 'black', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',  borderRadius: '5%' }} className="p-4 p-md-4">
           <TextField
             sx={{ width: "100%" }}
             variant='filled'
@@ -232,8 +234,10 @@ function App() {
             value={inputs?.title || ""}
             name='title'></TextField>
           <textarea onChange={handleChange} value={inputs?.content || ""} name='content' style={{ minWidth: "100%", minHeight: 400, padding: 10, border: "none" }} className='mt-2' placeholder='Enter your notes'></textarea>
-          <Button onClick={handleSaveNote} variant='outlined' className='me-2 bg-primary text-light px-4 py-2'>Save</Button>
-          <Button onClick={handleClose} variant='outlined' className='px-4 py-2'>Close</Button>
+          <Stack spacing={2}>
+            <Button onClick={handleSaveNote} variant='outlined' className='me-2 bg-primary text-light px-4 py-2'>Save</Button>
+            <Button onClick={handleClose} variant='outlined' className='px-4 py-2'>Close</Button>
+          </Stack>
         </Box>
       </Modal>
 
@@ -244,8 +248,9 @@ function App() {
         onClose={handleClose}
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
+        
       >
-        <Box sx={{ minWidth: "50%", minHeight: 500, backgroundColor: 'white', color: 'black', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', padding: 5, borderRadius: '5%' }}>
+        <Box sx={{ minWidth: "50%", minHeight: 500, backgroundColor: 'white', color: 'black', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',  borderRadius: '5%' }} className="p-4 p-md-4">
           <TextField
             sx={{ width: "100%" }}
             variant='filled'
@@ -255,9 +260,11 @@ function App() {
             onChange={handleChange}
             value={inputs?.title || ""}
             name='title'></TextField>
-          <textarea readOnly={true} onChange={handleChange} value={inputs?.content} name='content' style={{ minWidth: "100%", minHeight: 400, padding: 10, border: "none" }} className='mt-2' placeholder='Enter your notes'></textarea>
-          <Button onClick={handleShow} variant='outlined' className='me-2 bg-primary text-light px-4 py-2'>Edit</Button>
-          <Button onClick={handleClose} variant='outlined' className='px-4 py-2'>Close</Button>
+          <textarea disabled readOnly={true} onChange={handleChange} value={inputs?.content} name='content' style={{ minWidth: "100%", minHeight: 400, padding: 10, border: "none" }} className='mt-2' placeholder='Enter your notes'></textarea>
+          <Stack spacing={2}>
+            <Button onClick={handleShow} variant='outlined'className='me-2 bg-primary text-light px-4 py-2'>Edit</Button>
+            <Button onClick={handleClose} variant='outlined' className='px-4 py-2'>Close</Button>
+          </Stack>
         </Box>
       </Modal>
     </>

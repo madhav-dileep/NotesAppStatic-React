@@ -5,7 +5,7 @@ import SendIcon from '@mui/icons-material/Send';
 
 const Footer = () => {
     return (
-        <div className='footerStyle d-flex justify-content-evenly bg-dark text-light py-5 rounded-top-2'>
+        <div className='footerStyle d-flex flex-wrap justify-content-evenly bg-dark text-light py-5 rounded-top-2'>
             <div style={{ width: '400px' }} className='information p-2 '>
                 <div style={{ fontSize: '1rem' }} className='d-flex'>
                     <NotesIcon style={{ fontSize: '1.5rem' }} className='me-2' />
@@ -27,7 +27,7 @@ const Footer = () => {
                 <h5 style={{fontSize:'1.5rem'}} className='fw-bold'>Contact Us</h5>
                 <div className='d-flex'>
                     <TextField className='bg-light rounded fs-1 me-2' label="Email" variant="filled"></TextField>
-                    <Fab color="primary" aria-label="add">
+                    <Fab sx={{zIndex:0}} color="primary" aria-label="add">
                         <SendIcon/>                    
                     </Fab>
                 </div>
